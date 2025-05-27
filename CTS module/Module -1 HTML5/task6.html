@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Feedback</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f9f9f9;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    #feedbackImg {
+      width: 100px;
+      transition: transform 0.3s ease;
+      display: block;
+      margin: 20px auto;
+      cursor: pointer;
+    }
+
+    #feeDisplay, #charCount, #phoneError, #confirmation {
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
+    #phoneError {
+      color: red;
+    }
+
+    #confirmation {
+      text-align: center;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="feedbackForm">
+    <h2>Event Feedback</h2>
+
+    <label for="phone">Phone Number</label>
+    <input type="text" id="phone" placeholder="Enter 10-digit phone number" onblur="validatePhone()"/>
+    <div id="phoneError"></div>
+
+    <label for="eventType">Event Type</label>
+    <select id="eventType" onchange="showFee()">
+      <option value="">--Select Event--</option>
+      <option value="workshop">Workshop</option>
+      <option value="seminar">Seminar</option>
+      <option value="meetup">Meetup</option>
+    </select>
+    <div id="feeDisplay"></div>
+
+    <label for="feedback">Your Feedback</label>
+    <textarea id="feedback" rows="4" placeholder="Share your thoughts..." onkeyup="countChars()"></textarea>
+    <div id="charCount">Characters: 0</div>
+
+    <img src="event.jpg" alt="Event Snapshot" id="feedbackImg" ondblclick="enlargeImage()" title="Double-click to enlarge">
+
+    <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+    <div id="confirmation"></div>
+  </form>
+
+  <script>
+    function validatePhone() {
+      const phone = document.getElementById("phone").value;
+      const error = document.getElementById("phoneError");
+      const phoneRegex = /^[0-9]{10}$/;
+
+      if (!phoneRegex.test(phone)) {
+        error.textContent = "Please enter a valid 10-digit phone number.";
+      } else {
+        error.textContent = "";
+      }
+    }
+
+    function showFee() {
+      const eventType = document.getElementById("eventType").value;
+      const feeDisplay = document.getElementById("feeDisplay");
+
+      let fee = "";
+      switch (eventType) {
+        case "workshop":
+          fee = "$20";
+          break;
+        case "seminar":
+          fee = "$15";
+          break;
+        case "meetup":
+          fee = "Free";
+          break;
+        default:
+          fee = "";
+      }
+
+      feeDisplay.textContent = eventType ? `Fee for selected event: ${fee} `: "";
+    }
+
+    function countChars() {
+      const feedback = document.getElementById("feedback").value;
+      document.getElementById("charCount").textContent = `Characters: ${feedback.length}`;
+    }
+
+    function enlargeImage() {
+      const img = document.getElementById("feedbackImg");
+      img.style.transform = img.style.transform === "scale(2)" ? "scale(1)" : "scale(2)";
+    }
+
+    function submitFeedback() {
+      const confirmation = document.getElementById("confirmation");
+      confirmation.textContent = "Thank you! Your feedback has been submitted.";
+    }
+  </script>
+
+</body>
+</html>

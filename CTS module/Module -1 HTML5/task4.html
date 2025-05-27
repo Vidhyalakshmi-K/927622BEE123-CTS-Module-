@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Base Template</title>
+    <style>
+        /* Welcome Banner */
+        #welcomeBanner {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        /* Highlight Class */
+        .highlight {
+            background-color: yellow;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        /* Image Styling */
+        .gallery-img {
+            width: 200px;
+            height: 150px;
+            border: 3px solid #444;
+            border-radius: 8px;
+        }
+     /* Centering and spacing */
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        caption {
+            caption-side: top;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="help.html" target="_blank">Help</a></li>
+        </ul>
+    </nav>
+  <!-- Welcome Banner -->
+    <div id="welcomeBanner">
+        Welcome back, user! <span style="color: red; font-weight: bold;">Special Offer: 50% off!</span>
+    </div>
+
+    <!-- Main -->
+    <main>
+
+        <!-- Home Section -->
+        <section id="home">
+            <h1 class="highlight">Welcome to the Portal</h1>
+            <p>This is the <span class="highlight">home section</span>.</p>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events">
+            <h2>Past Community Events</h2>
+   <!-- Image Gallery Table -->
+            <table>
+                <caption>Snapshots from Recent Community Events</caption>
+                <tr>
+                    <td>
+                        <img src="event1.jpg" alt="Community Fair 2024" title="Community Fair 2024" class="gallery-img">
+                        <div>Fair 2024</div>
+                    </td>
+                    <td>
+                        <img src="event2.jpg" alt="Coding Bootcamp" title="Coding Bootcamp" class="gallery-img">
+                        <div>Bootcamp</div>
+                    </td>
+                    <td>
+                        <img src="event3.jpg" alt="Charity Run" title="Charity Run" class="gallery-img">
+                        <div>Charity Run</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="event4.jpg" alt="Hackathon Winners" title="Hackathon Winners" class="gallery-img">
+                        <div>Hackathon</div>
+                    </td>
+                    <td>
+                        <img src="event5.jpg" alt="Workshop Day" title="Workshop Day" class="gallery-img">
+    <div>Workshop</div>
+                    </td>
+                    <td>
+                        <img src="event6.jpg" alt="Community Picnic" title="Community Picnic" class="gallery-img">
+                        <div>Picnic</div>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Reach out via email or phone.</p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Portal Inc.</p>
+    </footer>
+
+</body>
+</html>

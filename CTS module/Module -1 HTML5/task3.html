@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Base Template</title>
+    <style>
+        /* Internal CSS */
+
+        /* Style for welcome banner using ID */
+        #welcomeBanner {
+            background-color: #007BFF; /* Bootstrap blue */
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        /* Class for visual emphasis */
+        .highlight {
+            background-color: yellow;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="help.html" target="_blank">Help</a></li>
+        </ul>
+    </nav>
+
+    <!-- Welcome Banner -->
+    <div id="welcomeBanner">
+        Welcome back, user! <span style="color: red; font-weight: bold;">Special Offer: 50% off!</span>
+    </div>
+
+    <!-- Main -->
+    <main>
+
+        <!-- Home Section -->
+        <section id="home">
+            <h1 class="highlight">Welcome to the Portal</h1>
+            <p>This is the <span class="highlight">home section</span>.</p>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events">
+            <h2>Upcoming Events</h2>
+            <p class="highlight">Don't miss our upcoming sessions!</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Reach out via email or phone.</p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Portal Inc.</p>
+    </footer>
+
+</body>
+</html>

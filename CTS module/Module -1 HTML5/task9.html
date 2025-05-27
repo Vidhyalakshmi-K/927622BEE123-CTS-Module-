@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Find Nearby Events</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #eef2f7;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    button {
+      padding: 12px 18px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background-color: #28a745;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+
+    .coords {
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Find Nearby Events</h2>
+    <p>Click the button below to locate events near you.</p>
+    <button onclick="getLocation()">Find Nearby Events</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function getLocation() {
+      const result = document.getElementById("result");
+      result.textContent = "Locating...";
+
+      if (!navigator.geolocation) {
+        result.innerHTML = "<div class='error'>Geolocation is not supported by your browser.</div>";
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(showPosition, handleError, {
+        enableHighAccuracy: true,
+        timeout: 10000,       // 10 seconds
+        maximumAge: 0
+      });
+    }
+
+    function showPosition(position) {
+      const lat = position.coords.latitude.toFixed(6);
+      const lon = position.coords.longitude.toFixed(6);
+
+      document.getElementById("result").innerHTML = `
+        <div class="coords">Your Coordinates:</div>
+        Latitude: ${lat} <br>
+        Longitude: ${lon} <br>
+        <br>
+        <em>Use these coordinates to find events near you!</em>
+      `;
+    }
+
+    function handleError(error) {
+      let message = "";
+
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          message = "Permission denied. Please allow location access.";
+          break;
+        case error.POSITION_UNAVAILABLE:
+          message = "Location unavailable.";
+          break;
+        case error.TIMEOUT:
+          message = "Request timed out. Try again.";
+          break;
+        default:
+          message = "An unknown error occurred.";
+      }
+
+      document.getElementById("result").innerHTML = <div class="error">${message}</div>;
+    }
+  </script>
+
+</body>
+</html>

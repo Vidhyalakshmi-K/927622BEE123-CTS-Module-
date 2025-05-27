@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Debugging with Chrome DevTools</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 100px;
+      background-color: lightblue;
+      margin: 20px;
+      line-height: 100px;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Debugging Example</h1>
+  <p>Click the blue box to change its color.</p>
+
+  <div id="box">Click me</div>
+
+  <script>
+    // Log when script starts running
+    console.log("Script loaded and running.");
+
+    const box = document.getElementById("box");
+
+    box.addEventListener("click", () => {
+      console.log("Box clicked"); // Log click event
+
+      const randomColor = getRandomColor();
+      console.log("Selected color:", randomColor); // Log chosen color
+
+      box.style.backgroundColor = randomColor;
+    });
+
+    function getRandomColor() {
+      const colors = ["red", "green", "blue", "orange", "purple"];
+      // You can put a breakpoint on the next line to step through
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
+
+</body>
+</html>
